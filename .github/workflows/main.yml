@@ -1,8 +1,10 @@
+# vim:ft=conf
 # Workflow derived from https://github.com/r-lib/actions/tree/master/examples
 #
 # For help debugging build failures open an issue on the RStudio community with the 'github-actions' tag.
 # https://community.rstudio.com/new-topic?category=Package%20development&tags=github-actions
 on:
+
   push:
     branches: [main, master]
 
@@ -28,13 +30,20 @@ jobs:
           restore-keys: bookdown-
 
       - name: Build site
-        run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+#         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
 
-      - name: Deploy to Netlify
-        # NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID added in the repo's secrets
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        run: |
-          npm install netlify-cli -g
-          netlify deploy --prod --dir _book
+# 			# deploy to gh-pages
+#       - name: Deploy package
+#         run: |
+#           git config --local user.name "$GITHUB_ACTOR"
+#           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+#           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
+
+#      - name: Deploy to Netlify
+#        # NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID added in the repo's secrets
+#        env:
+#          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+#          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+#        run: |
+#          npm install netlify-cli -g
+#          netlify deploy --prod --dir _book
