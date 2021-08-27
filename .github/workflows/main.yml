@@ -30,16 +30,18 @@ jobs:
           key: bookdown-${{ hashFiles('**/*Rmd') }}
           restore-keys: bookdown-
 
-#       - name: Build site
-#         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+# TODO
 
-# 			# deploy to gh-pages
+# 			# deploy pkdown to gh-pages
+
 #       - name: Deploy package
 #         run: |
 #           git config --local user.name "$GITHUB_ACTOR"
 #           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
 #           Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'
 
+#      - name: Build site
+#         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
 #      - name: Deploy to Netlify
 #        # NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID added in the repo's secrets
 #        env:
