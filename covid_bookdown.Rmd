@@ -1,0 +1,105 @@
+--- 
+title: "Covid tRackeR"
+author: "GF"
+date: "`r Sys.Date()`"
+site: "bookdown::bookdown_site"
+documentclass: book
+always_allow_html: yes
+output:
+  bookdown::gitbook: default
+  #bookdown::pdf_book: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      fig.pos='H',
+                      fig.align = "center",
+                      warning=FALSE,
+                      message=FALSE)
+```
+
+```{r preambule, child='covid_preamb.md', eval=TRUE}
+```
+
+```{r sourceMain, eval=TRUE}
+source(file = "/media/usb1/covid/covid_main.R", local = TRUE)
+source(file = "/media/usb1/covid/covid_graph.R", local = TRUE)
+source(file = "/media/usb1/covid/covid_interna.R", local = TRUE)
+```
+
+# International data
+```{r internatData, eval=TRUE}
+dyRangeSelector(dygraph(data = z,
+												main = "Daily new confirmed COVID-19 cases per million people",
+												xlab = "Source: Johns Hopkins University CSSE COVID-19 Data"))
+```
+
+# French data
+
+## Résumé
+```{r summaryFrData, eval=TRUE}
+
+indicsum <- data.table(Indicateur=c("Taux d'incidence",
+																		"Taux de positivité",
+																		"Taux de reproduction"
+																		),
+											 Valeur=c(round(tifralllast$P7j100k,0),
+																round(tpfralllast$TP7j,2),
+																NA),
+											 MAJ=c(majtifralllast,
+														 majtpfrall,
+														 NA))
+
+knitr::kable(indicsum)
+```
+
+## Taux d'incidence
+
+### Niveau national
+```{r gtincidnat, eval=TRUE}
+hchart(tifrall,
+			 "line",
+			 hcaes(x=jour,
+						 y=P7j100k)) %>%
+hc_xAxis(title = list(text = "")) %>%
+hc_yAxis(title = list(text = "")) %>%
+hc_title(text = "Taux d'incidence national français") %>%
+hc_subtitle(text = "pour 100k habitants") %>%
+hc_caption(text = "Nb de cas par semaine pour 100 000 habitants") %>%
+hc_credits(enabled = TRUE,
+					 text = "Source : Santé Publique France, data.gouv.fr",
+					 href = "https://www.data.gouv.fr/fr/datasets/taux-dincidence-de-lepidemie-de-covid-19/")
+# gtincidnat
+```
+
+### Niveau départemental
+```{r gtinciddep, eval=TRUE}
+hcmap(
+  "countries/fr/fr-all-all", 
+  data = mtidepalllast,
+  name = "Taux d'incidence pour 100k habitants", 
+  value = "P7j100k",
+  borderWidth = 1,
+  nullColor = "#d3d3d3",
+  joinBy = c("hc-key", "codehc")) %>%
+  hc_colorAxis(
+							 minColor = "gold",
+							 maxColor = "brown",
+    type = "linear") 
+```
+
+### Niveau départemental, *ala* "CovidTracker ®"
+```{r grinciddepct, eval=TRUE}
+gtinciddep
+```
+
+### Niveau métropoles
+```{r gtincidmet, eval=TRUE, fig.width=14}
+gtincidmet
+```
+
+```{r link, child="covid_link.md", eval=TRUE}
+```
+
+```{r doc, child='covid_doc.md', eval=TRUE}
+```
