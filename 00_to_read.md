@@ -12,3 +12,5 @@ https://cran.r-project.org/web/packages/targets/vignettes/overview.html
 # lockdown map R yaml
 https://github.com/InseeFrLab/lockdown-maps-R/blob/master/.github/workflows/maps.yaml
 
+# renv with CI
+https://rstudio.github.io/renv/articles/ci.html
