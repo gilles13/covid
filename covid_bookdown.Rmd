@@ -89,7 +89,7 @@ hcmap(
 ```
 
 ### Niveau départemental, *ala* "CovidTracker ®"
-```{r grinciddepct, eval=TRUE}
+```{r gtinciddepct, eval=TRUE}
 gtinciddep
 ```
 
