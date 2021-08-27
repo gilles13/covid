@@ -11,38 +11,38 @@ library("dygraphs")
 
 # preparation --- {{{
 dateISO8601 <- format(Sys.time(), "%Y%m%d")
-source(file = "/media/usb1/covid/covid_url.R", local = TRUE)
-# source(file = "/media/usb1/covid/covid_dwl.R", local = TRUE)
-source(file = "/media/usb1/covid/covid_codif.R", local = TRUE)
+source(file = "./covid_url.R", local = TRUE)
+# source(file = "./covid_dwl.R", local = TRUE)
+source(file = "./covid_codif.R", local = TRUE)
 # --- }}}
 
 # import data --- {{{
 # spatial data
-frALL <- readRDS(file="~/data/frRESHAPE.RDS")
+frALL <- readRDS(file="./data/frRESHAPE.RDS")
 # table des indicateurs
-covtindnat <- fread("~/data/table-indicateurs-open-data-france.csv")
-covtinddep <- fread("~/data/table-indicateurs-open-data-dep.csv")
+covtindnat <- fread("./data/table-indicateurs-open-data-france.csv")
+covtinddep <- fread("./data/table-indicateurs-open-data-dep.csv")
 # données hospitalières
-# covdhdepsex <- fread("~/data/donnes_hosp_dep_sexe.csv")
-covdhquot <- fread("~/data/donnes_hosp_quot.csv")
+# covdhdepsex <- fread("./data/donnes_hosp_dep_sexe.csv")
+covdhquot <- fread("./data/donnes_hosp_quot.csv")
 covdhquot$annee <- format(covdhquot$jour, "%Y")
 # taux d'incidence
-covtinat <- fread("~/data/sp-pe-tb-quot-fra.csv")
-covtidep <- fread("~/data/sp-pe-tb-quot-dep.csv")
+covtinat <- fread("./data/sp-pe-tb-quot-fra.csv")
+covtidep <- fread("./data/sp-pe-tb-quot-dep.csv")
 # vaccination
-# covvacfra <- fread("~/data/vacsi12-fra.csv")
-# covvacvfr <- fread("~/data/vacsi-v-fra.csv")
-# covvacafr <- fread("~/data/vacsi-a-fra.csv")
-# covvacsfr <- fread("~/data/vacsi-s-fra.csv")
-# covvactotfr <- fread("~/data/vacsi-tot-fra.csv")
-# covvactotafr <- fread("~/data/vacsi-tot-a-fra.csv")
-# covvactotsfr <- fread("~/data/vacsi-tot-s-fra.csv")
+# covvacfra <- fread("./data/vacsi12-fra.csv")
+# covvacvfr <- fread("./data/vacsi-v-fra.csv")
+# covvacafr <- fread("./data/vacsi-a-fra.csv")
+# covvacsfr <- fread("./data/vacsi-s-fra.csv")
+# covvactotfr <- fread("./data/vacsi-tot-fra.csv")
+# covvactotafr <- fread("./data/vacsi-tot-a-fra.csv")
+# covvactotsfr <- fread("./data/vacsi-tot-s-fra.csv")
 # données métropoles
-covsgmetro <- fread("~/data/sg-metro-opendata.csv")
+covsgmetro <- fread("./data/sg-metro-opendata.csv")
 covsgmetro$epci2020 <- as.character(covsgmetro$epci2020)
 # tests virologiques
-covtestnat <- fread("~/data/sp-pos-quot-fra.csv")
-covtestdep <- fread("~/data/sp-pos-quot-dep.csv")
+covtestnat <- fread("./data/sp-pos-quot-fra.csv")
+covtestdep <- fread("./data/sp-pos-quot-dep.csv")
 # --- }}}
 
 # Taux d'incidence --- {{{
