@@ -136,10 +136,10 @@ nmnhqdeplast <- nmnhqdep[, .SD[.N], by=dep]
 
 # Nb moyen de décès quotidien à l'hopital --- {{{
 nmdcquothop <- copy(covdhquot)
-nmdcquothop <- merge(x = nmdcquothop, y=codedep[, c("DEP", "NCC")],
-							 by.x = "dep",
-							 by.y = "DEP")
-
+nmdcquothop <- merge(x = nmdcquothop,
+										 y = codedep[, c("DEP", "NCC")],
+										 by.x = "dep",
+										 by.y = "DEP")
 nmdcquothop[, "nmdcquot" := lapply(.SD, frollmean, n=7, fill=NA, align="right"),
 	 by=.(dep, annee),
 	 .SDcols = "incid_dc"]

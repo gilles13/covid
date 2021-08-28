@@ -31,7 +31,7 @@ urlcovvactotsfr <- "https://www.data.gouv.fr/fr/datasets/r/e49fec64-0080-4592-bd
 urlcovvacvfr <- "https://www.data.gouv.fr/fr/datasets/r/b273cf3b-e9de-437c-af55-eda5979e92fc"
 
 # données par métropole
-urlsgmetro <- "https://www.data.gouv.fr/fr/datasets/r/61533034-0f2f-4b16-9a6d-28ffabb33a02"
+urlcovsgmetro <- "https://www.data.gouv.fr/fr/datasets/r/61533034-0f2f-4b16-9a6d-28ffabb33a02"
 
 # données tests virologiques
 urlcovtestsnat <- "https://www.data.gouv.fr/fr/datasets/r/dd0de5d9-b5a5-4503-930a-7b08dc0adc7c"
@@ -39,3 +39,6 @@ urlcovtestsdep <- "https://www.data.gouv.fr/fr/datasets/r/406c6a23-e283-4300-948
 
 # spatial data France by dept
 # urlFrGEOFLA <- "ftp://Admin_Express_ext:Dahnoh0eigheeFok@ftp3.ign.fr/GEOFLA_2-2_DEPARTEMENT_SHP_LAMB93_FXX_2016-06-28.7z"
+
+
+# urlToDwl <- fread("~/urlToDwlCov.csv")

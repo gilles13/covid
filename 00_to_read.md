@@ -1,6 +1,9 @@
 # rlib actions
 https://github.com/r-lib/actions/tree/master/examples#build-bookdown-site
 
+# pkdown
+https://pkgdown.r-lib.org/
+
 # deploy with blogdown
 https://bookdown.org/yihui/blogdown/deployment.html#deployment
 
